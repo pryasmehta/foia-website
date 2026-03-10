@@ -456,7 +456,7 @@
         <h2 class="form-title">Send a Message</h2>
         <p class="form-sub">Fill in the form and we'll get back to you as soon as possible.</p>
 
-        <form onsubmit="handleSubmit(event)">
+        <form action="mailto:pryasmehta21@gmail.com" method="POST" enctype="text/plain">
           <div class="form-row">
             <div class="form-group">
               <label for="fname">First Name</label>
@@ -486,7 +486,7 @@
           <button type="submit" class="btn-submit">Send Message →</button>
         </form>
 
-        <div id="form-success" style="display:none;margin-top:20px;padding:16px;background:rgba(45,106,79,0.08);border:1px solid rgba(45,106,79,0.2);border-radius:2px;font-size:0.88rem;color:#2D6A4F;">
+       <div id="form-success" style="display:none;margin-top:20px;padding:16px;background:rgba(45,106,79,0.08);border:1px solid rgba(45,106,79,0.2);border-radius:2px;font-size:0.88rem;color:#2D6A4F;">
           ✓ Thank you! Your message has been sent. We'll be in touch soon.
         </div>
       </div>
@@ -556,12 +556,12 @@
     }, { threshold: 0.1 });
     reveals.forEach(el => observer.observe(el));
 
-    // Form submit
+/*    // Form submit
     function handleSubmit(e) {
       e.preventDefault();
       document.getElementById('form-success').style.display = 'block';
       e.target.reset();
-    }
+    }*/
   </script>
 </body>
 </html>
