@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact – FOIA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --saffron: #E8651A;
+      --saffron-light: #F5A05A;
+      --cream: #FAF6EF;
+      --deep: #1A1410;
+      --muted: #7A6E64;
+      --white: #FFFFFF;
+      --border: rgba(232,101,26,0.18);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--deep);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ─── NAV ─────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw;
+      height: 72px;
+      background: rgba(250,246,239,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      display: flex; align-items: center; gap: 14px;
+      text-decoration: none;
+    }
+
+    .logo-mark {
+      width: 44px; height: 44px;
+      background: var(--saffron);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-mark::before {
+      content: '';
+      position: absolute;
+      width: 20px; height: 20px;
+      border: 2.5px solid white;
+      border-radius: 50%;
+    }
+
+    .logo-mark::after {
+      content: '✦';
+      color: white;
+      font-size: 11px;
+      position: absolute;
+    }
+
+    .logo-text {
+      display: flex; flex-direction: column; line-height: 1.1;
+    }
+
+    .logo-text span:first-child {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem; font-weight: 600;
+      color: var(--saffron);
+      letter-spacing: 0.04em;
+    }
+
+    .logo-text span:last-child {
+      font-size: 0.65rem; font-weight: 300;
+      color: var(--muted); letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex; gap: 40px; list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.85rem; font-weight: 400;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 1px;
+      background: var(--saffron);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: var(--saffron); }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+    /* ─── PAGE HEADER ───────────────────────────── */
+    .page-header {
+      padding: 160px 5vw 80px;
+      background: white;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header::after {
+      content: 'Contact';
+      position: absolute;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14vw; font-weight: 300;
+      color: rgba(232,101,26,0.04);
+      right: -20px; bottom: -30px;
+      line-height: 1; pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .page-header-inner { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--saffron); margin-bottom: 20px;
+    }
+    .section-label::before { content: ''; width: 24px; height: 1px; background: var(--saffron); }
+
+    .page-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      font-weight: 300; line-height: 1.1;
+      color: var(--deep);
+    }
+
+    .page-title em { color: var(--saffron); font-style: italic; }
+
+    .page-subtitle {
+      margin-top: 16px;
+      font-size: 1rem; color: var(--muted); font-weight: 300;
+      max-width: 480px; line-height: 1.8;
+    }
+
+    /* ─── CONTACT BODY ──────────────────────────── */
+    .contact-body {
+      padding: 80px 5vw 100px;
+    }
+
+    .contact-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1.3fr;
+      gap: 80px; align-items: start;
+    }
+
+    /* Contact Info */
+    .contact-info { }
+
+    .info-block {
+      margin-bottom: 44px;
+      padding-bottom: 44px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .info-block:last-of-type { border-bottom: none; margin-bottom: 0; }
+
+    .info-label {
+      font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--saffron); margin-bottom: 12px;
+    }
+
+    .info-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 400;
+      color: var(--deep); margin-bottom: 10px;
+    }
+
+    .info-text {
+      font-size: 0.9rem; color: var(--muted);
+      line-height: 1.9; font-weight: 300;
+      font-style: normal;
+    }
+
+    .info-text a {
+      color: var(--saffron); text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .info-text a:hover { opacity: 0.7; }
+
+    /* Contact Form */
+    .contact-form-wrap {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 48px 44px;
+    }
+
+    .form-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem; font-weight: 300;
+      color: var(--deep); margin-bottom: 8px;
+    }
+
+    .form-sub {
+      font-size: 0.85rem; color: var(--muted); font-weight: 300;
+      margin-bottom: 36px;
+    }
+
+    .form-group { margin-bottom: 24px; }
+
+    .form-group label {
+      display: block;
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 13px 16px;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; font-weight: 300;
+      color: var(--deep);
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--saffron);
+      background: white;
+    }
+
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .btn-submit {
+      width: 100%;
+      padding: 15px;
+      background: var(--saffron);
+      color: white;
+      border: none; cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.15s;
+      margin-top: 8px;
+    }
+
+    .btn-submit:hover { background: #c9551a; transform: translateY(-1px); }
+
+    /* Map placeholder */
+    .map-section {
+      padding: 0 5vw 100px;
+    }
+
+    .map-inner { max-width: 1100px; margin: 0 auto; }
+
+    .map-placeholder {
+      width: 100%; height: 320px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 12px;
+      color: var(--muted);
+    }
+
+    .map-placeholder span:first-child { font-size: 2.5rem; }
+    .map-placeholder span:last-child { font-size: 0.85rem; font-weight: 300; }
+
+    /* ─── FOOTER ────────────────────────────────── */
+    footer {
+      background: var(--deep);
+      padding: 80px 5vw 40px;
+    }
+
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+
+    .footer-top {
+      display: grid; grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 60px; padding-bottom: 60px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 40px;
+    }
+
+    .footer-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 300;
+      font-style: italic; color: rgba(255,255,255,0.9);
+      line-height: 1.4; margin: 20px 0 16px;
+    }
+
+    .footer-desc {
+      font-size: 0.85rem; color: rgba(255,255,255,0.4);
+      line-height: 1.8; font-weight: 300;
+    }
+
+    .footer-col h4 {
+      font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--saffron); margin-bottom: 20px;
+    }
+
+    .footer-col p, .footer-col address {
+      font-size: 0.88rem; color: rgba(255,255,255,0.5);
+      line-height: 1.9; font-style: normal; font-weight: 300;
+    }
+
+    .footer-col a {
+      color: rgba(255,255,255,0.5); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--saffron-light); }
+
+    .footer-bottom {
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 16px;
+    }
+
+    .footer-bottom p {
+      font-size: 0.75rem; color: rgba(255,255,255,0.25);
+      letter-spacing: 0.04em;
+    }
+
+    .footer-logo-mark {
+      width: 36px; height: 36px;
+      background: var(--saffron);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* ─── ANIMATIONS ─────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: none; }
+    }
+    .page-header-inner { animation: fadeUp 0.8s ease both; }
+
+    .reveal {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ─── RESPONSIVE ─────────────────────────────── */
+    @media (max-width: 768px) {
+      .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+      .footer-top { grid-template-columns: 1fr; gap: 40px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 500px) {
+      .nav-links { display: none; }
+      .contact-form-wrap { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="index.html">
+      <div class="logo-mark"></div>
+      <div class="logo-text">
+        <span>FOIA</span>
+        <span>Friends of India Association</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="section-label">Reach Out</div>
+      <h1 class="page-title">Let's <em>Connect</em></h1>
+      <p class="page-subtitle">We'd love to hear from you — whether you want to join, collaborate, or simply learn more about FOIA and our activities.</p>
+    </div>
+  </div>
+
+  <!-- CONTACT BODY -->
+  <div class="contact-body">
+    <div class="contact-inner">
+
+      <!-- Info Side -->
+      <div>
+        <div class="info-block reveal">
+          <div class="info-label">Email</div>
+          <div class="info-title">Write to Us</div>
+          <address class="info-text">
+            General enquiries:<br>
+            <a href="mailto:info@foia.cz">info@foia.cz</a><br><br>
+            Membership:<br>
+            <a href="mailto:members@foia.cz">members@foia.cz</a>
+          </address>
+        </div>
+
+        <div class="info-block reveal">
+          <div class="info-label">Phone</div>
+          <div class="info-title">Call Us</div>
+          <address class="info-text">
+            <a href="tel:+420000000000">+420 000 000 000</a><br>
+            Mon – Fri, 9:00 – 17:00 CET
+          </address>
+        </div>
+
+        <div class="info-block reveal">
+          <div class="info-label">Address</div>
+          <div class="info-title">Visit Us</div>
+          <address class="info-text">
+            Friends of India Association<br>
+            [Street Address]<br>
+            Prague, Czech Republic<br>
+            [Postal Code]
+          </address>
+        </div>
+
+        <div class="info-block reveal">
+          <div class="info-label">Social</div>
+          <div class="info-title">Follow Us</div>
+          <p class="info-text">
+            Stay connected and up to date with our latest events, news, and cultural activities on social media.
+          </p>
+        </div>
+      </div>
+
+      <!-- Form Side -->
+      <div class="contact-form-wrap reveal">
+        <h2 class="form-title">Send a Message</h2>
+        <p class="form-sub">Fill in the form and we'll get back to you as soon as possible.</p>
+
+        <form onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" placeholder="Jana" required />
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" placeholder="Nováková" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="jana@example.com" required />
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" placeholder="How can we help?" />
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" placeholder="Tell us about your interest in FOIA, a question, or how you'd like to get involved..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit">Send Message →</button>
+        </form>
+
+        <div id="form-success" style="display:none;margin-top:20px;padding:16px;background:rgba(45,106,79,0.08);border:1px solid rgba(45,106,79,0.2);border-radius:2px;font-size:0.88rem;color:#2D6A4F;">
+          ✓ Thank you! Your message has been sent. We'll be in touch soon.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MAP -->
+  <div class="map-section">
+    <div class="map-inner">
+      <div class="map-placeholder reveal">
+        <span>📍</span>
+        <span>Prague, Czech Republic — Map coming soon</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div class="footer-logo-mark"><span style="color:white;font-size:10px;">✦</span></div>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:white;letter-spacing:0.05em;">FOIA</span>
+          </div>
+          <p class="footer-tagline">"Where Cultures Meet,<br>Friendships Flourish."</p>
+          <p class="footer-desc">Friends of India Association is a civic association in the Czech Republic dedicated to fostering friendship, cultural exchange, and mutual understanding between Czech and Indian communities.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <p>
+            <a href="index.html" style="display:block;margin-bottom:10px;">Home</a>
+            <a href="contact.html" style="display:block;margin-bottom:10px;">Contact Us</a>
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <address>
+            Friends of India Association<br>
+            Czech Republic<br><br>
+            <a href="mailto:info@foia.cz">info@foia.cz</a><br><br>
+            <a href="tel:+420000000000">+420 000 000 000</a>
+          </address>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 Friends of India Association in Czech Republic. All rights reserved.</p>
+        <p>Made with ♥ for Czech–Indian friendship</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 100);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Form submit
+    function handleSubmit(e) {
+      e.preventDefault();
+      document.getElementById('form-success').style.display = 'block';
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>

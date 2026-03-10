@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FOIA – Friends of India Association</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --saffron: #E8651A;
+      --saffron-light: #F5A05A;
+      --cream: #FAF6EF;
+      --deep: #1A1410;
+      --muted: #7A6E64;
+      --white: #FFFFFF;
+      --border: rgba(232,101,26,0.18);
+      --green: #2D6A4F;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--deep);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ─── NAV ─────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw;
+      height: 72px;
+      background: rgba(250,246,239,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      display: flex; align-items: center; gap: 14px;
+      text-decoration: none;
+    }
+
+    .logo-mark {
+      width: 44px; height: 44px;
+      background: var(--saffron);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-mark::before {
+      content: '';
+      position: absolute;
+      width: 20px; height: 20px;
+      border: 2.5px solid white;
+      border-radius: 50%;
+    }
+
+    .logo-mark::after {
+      content: '✦';
+      color: white;
+      font-size: 11px;
+      position: absolute;
+    }
+
+    .logo-text {
+      display: flex; flex-direction: column; line-height: 1.1;
+    }
+
+    .logo-text span:first-child {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem; font-weight: 600;
+      color: var(--saffron);
+      letter-spacing: 0.04em;
+    }
+
+    .logo-text span:last-child {
+      font-size: 0.65rem; font-weight: 300;
+      color: var(--muted); letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex; gap: 40px; list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.85rem; font-weight: 400;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 1px;
+      background: var(--saffron);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: var(--saffron); }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+    /* ─── HERO ─────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 0 5vw;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 75% 50%, rgba(232,101,26,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(45,106,79,0.06) 0%, transparent 60%);
+    }
+
+    .hero-pattern {
+      position: absolute; right: -60px; top: 50%;
+      transform: translateY(-50%);
+      width: 520px; height: 520px;
+      opacity: 0.06;
+      background-image: repeating-conic-gradient(var(--saffron) 0deg 10deg, transparent 10deg 20deg);
+      border-radius: 50%;
+    }
+
+    .hero-content {
+      position: relative; z-index: 1;
+      max-width: 660px;
+      animation: fadeUp 1s ease both;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--saffron); margin-bottom: 28px;
+    }
+
+    .hero-eyebrow::before {
+      content: ''; width: 32px; height: 1px; background: var(--saffron);
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 6vw, 5.2rem);
+      font-weight: 300; line-height: 1.1;
+      color: var(--deep);
+      margin-bottom: 12px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--saffron);
+    }
+
+    .hero-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      font-weight: 300; color: var(--muted);
+      margin-bottom: 36px;
+      font-style: italic;
+    }
+
+    .hero-desc {
+      font-size: 0.95rem; font-weight: 300;
+      color: var(--muted); max-width: 480px;
+      margin-bottom: 44px;
+      line-height: 1.8;
+    }
+
+    .hero-cta {
+      display: inline-flex; gap: 16px; flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 14px 34px;
+      background: var(--saffron);
+      color: white; text-decoration: none;
+      font-size: 0.82rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: #c9551a; transform: translateY(-1px); }
+
+    .btn-ghost {
+      display: inline-block;
+      padding: 14px 34px;
+      border: 1px solid var(--saffron);
+      color: var(--saffron); text-decoration: none;
+      font-size: 0.82rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      border-radius: 2px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { background: var(--saffron); color: white; }
+
+    /* ─── SECTION SHARED ───────────────────────── */
+    section { padding: 100px 5vw; }
+
+    .section-label {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--saffron); margin-bottom: 20px;
+    }
+    .section-label::before { content: ''; width: 24px; height: 1px; background: var(--saffron); }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300; line-height: 1.2;
+      margin-bottom: 24px;
+    }
+
+    /* ─── ABOUT ─────────────────────────────────── */
+    .about {
+      background: white;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px;
+      align-items: center;
+    }
+
+    .about-left { }
+
+    .about-left .section-title { margin-bottom: 28px; }
+    .about-left .section-title em { color: var(--saffron); font-style: italic; }
+
+    .about-text {
+      font-size: 0.95rem; color: var(--muted);
+      line-height: 1.9; font-weight: 300;
+      margin-bottom: 20px;
+    }
+
+    .about-right {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    }
+
+    .stat-card {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      padding: 28px 24px;
+      border-radius: 4px;
+    }
+
+    .stat-card:first-child { grid-column: 1 / -1; background: var(--saffron); }
+    .stat-card:first-child .stat-number, .stat-card:first-child .stat-label { color: white; }
+
+    .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem; font-weight: 300;
+      color: var(--saffron); line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 0.78rem; font-weight: 400;
+      letter-spacing: 0.08em; color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    /* ─── ACTIVITIES ───────────────────────────── */
+    .activities { background: var(--cream); }
+
+    .activities-inner { max-width: 1100px; margin: 0 auto; }
+
+    .activities-header {
+      display: flex; justify-content: space-between;
+      align-items: flex-end; margin-bottom: 60px;
+      flex-wrap: wrap; gap: 20px;
+    }
+
+    .activities-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+    }
+
+    .activity-card {
+      background: white;
+      padding: 48px 40px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+      cursor: default;
+    }
+
+    .activity-card:hover { background: var(--saffron); }
+    .activity-card:hover .activity-title,
+    .activity-card:hover .activity-text,
+    .activity-card:hover .activity-num { color: white; }
+    .activity-card:hover .activity-icon { background: rgba(255,255,255,0.2); color: white; }
+
+    .activity-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem; font-weight: 300;
+      color: rgba(232,101,26,0.08);
+      position: absolute; top: 16px; right: 28px;
+      line-height: 1; transition: color 0.3s;
+      pointer-events: none;
+    }
+
+    .activity-icon {
+      width: 48px; height: 48px;
+      background: var(--cream);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 24px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .activity-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; font-weight: 400;
+      color: var(--deep); margin-bottom: 14px;
+      transition: color 0.3s;
+    }
+
+    .activity-text {
+      font-size: 0.88rem; color: var(--muted);
+      line-height: 1.8; font-weight: 300;
+      transition: color 0.3s;
+    }
+
+    /* ─── GOAL ─────────────────────────────────── */
+    .goal {
+      background: var(--deep);
+      position: relative; overflow: hidden;
+    }
+
+    .goal::before {
+      content: '';
+      position: absolute; top: -100px; right: -100px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(232,101,26,0.15) 0%, transparent 70%);
+    }
+
+    .goal-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+
+    .goal .section-label { color: var(--saffron-light); }
+    .goal .section-label::before { background: var(--saffron-light); }
+    .goal .section-title { color: white; }
+    .goal .section-title em { color: var(--saffron-light); font-style: italic; }
+
+    .goal-body {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+      margin-top: 48px; align-items: start;
+    }
+
+    .goal-text {
+      font-size: 1.05rem; color: rgba(255,255,255,0.65);
+      line-height: 1.9; font-weight: 300;
+    }
+
+    .goal-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+      font-style: italic; font-weight: 300;
+      color: rgba(255,255,255,0.9);
+      border-left: 2px solid var(--saffron);
+      padding-left: 28px;
+      line-height: 1.5;
+    }
+
+    /* ─── ADDED VALUE ───────────────────────────── */
+    .added-value { background: white; }
+
+    .av-inner { max-width: 1100px; margin: 0 auto; }
+
+    .av-header { margin-bottom: 60px; }
+
+    .av-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .av-card {
+      padding: 36px 30px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      position: relative;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .av-card:hover {
+      border-color: var(--saffron);
+      box-shadow: 0 8px 32px rgba(232,101,26,0.08);
+    }
+
+    .av-card-accent {
+      width: 32px; height: 3px;
+      background: var(--saffron);
+      margin-bottom: 20px;
+    }
+
+    .av-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; font-weight: 400;
+      color: var(--deep); margin-bottom: 12px;
+    }
+
+    .av-text {
+      font-size: 0.88rem; color: var(--muted);
+      line-height: 1.8; font-weight: 300;
+    }
+
+    /* ─── FOOTER ────────────────────────────────── */
+    footer {
+      background: var(--deep);
+      padding: 80px 5vw 40px;
+    }
+
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+    }
+
+    .footer-top {
+      display: grid; grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 60px; padding-bottom: 60px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 40px;
+    }
+
+    .footer-brand { }
+
+    .footer-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 300;
+      font-style: italic; color: rgba(255,255,255,0.9);
+      line-height: 1.4; margin: 20px 0 16px;
+    }
+
+    .footer-desc {
+      font-size: 0.85rem; color: rgba(255,255,255,0.4);
+      line-height: 1.8; font-weight: 300;
+    }
+
+    .footer-col h4 {
+      font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--saffron); margin-bottom: 20px;
+    }
+
+    .footer-col p, .footer-col address {
+      font-size: 0.88rem; color: rgba(255,255,255,0.5);
+      line-height: 1.9; font-style: normal; font-weight: 300;
+    }
+
+    .footer-col a {
+      color: rgba(255,255,255,0.5); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--saffron-light); }
+
+    .footer-bottom {
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 16px;
+    }
+
+    .footer-bottom p {
+      font-size: 0.75rem; color: rgba(255,255,255,0.25);
+      letter-spacing: 0.04em;
+    }
+
+    .footer-logo-mark {
+      width: 36px; height: 36px;
+      background: var(--saffron);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .footer-logo-mark span { color: white; font-size: 10px; }
+
+    /* ─── ANIMATIONS ────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ─── DIVIDER ───────────────────────────────── */
+    .ornament {
+      display: flex; align-items: center; gap: 16px;
+      margin: 0 auto 0; max-width: fit-content;
+    }
+    .ornament span { width: 48px; height: 1px; background: var(--border); }
+    .ornament em {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; color: var(--saffron);
+      font-style: normal;
+    }
+
+    /* ─── RESPONSIVE ────────────────────────────── */
+    @media (max-width: 768px) {
+      .about-inner, .goal-body { grid-template-columns: 1fr; gap: 40px; }
+      .activities-grid { grid-template-columns: 1fr; }
+      .av-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 40px; }
+      .about-right { grid-template-columns: 1fr 1fr; }
+      .nav-links { gap: 24px; }
+    }
+
+    @media (max-width: 500px) {
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="index.html">
+      <div class="logo-mark"></div>
+      <div class="logo-text">
+        <span>FOIA</span>
+        <span>Friends of India Association</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-pattern"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Czech Republic &amp; India</div>
+      <h1>Bridging<br>Two Worlds,<br><em>One Heart</em></h1>
+      <p class="hero-sub">Friends of India Association in Czech Republic</p>
+      <p class="hero-desc">
+        A community dedicated to celebrating Indian culture, fostering friendship between Czech and Indian people, and building meaningful connections across borders.
+      </p>
+      <div class="hero-cta">
+        <a href="#about" class="btn-primary">Discover FOIA</a>
+        <a href="contact.html" class="btn-ghost">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="about-left reveal">
+        <div class="section-label">Who We Are</div>
+        <h2 class="section-title">A bridge between <em>Czech & Indian</em> cultures</h2>
+        <p class="about-text">
+          Friends of India Association (FOIA) is a civic association registered in the Czech Republic, uniting people who share a deep appreciation for India — its culture, heritage, values, and people.
+        </p>
+        <p class="about-text">
+          Founded on the principles of friendship, cultural exchange, and mutual understanding, FOIA serves as a platform for Czech and Indian communities to connect, collaborate, and celebrate together.
+        </p>
+      </div>
+      <div class="about-right reveal">
+        <div class="stat-card">
+          <div class="stat-number">FOIA</div>
+          <div class="stat-label">Friends of India Association — Czech Republic</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">🇮🇳</div>
+          <div class="stat-label">Cultural Heritage</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">🇨🇿</div>
+          <div class="stat-label">Czech Community</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACTIVITIES -->
+  <section class="activities">
+    <div class="activities-inner">
+      <div class="activities-header reveal">
+        <div>
+          <div class="section-label">What We Do</div>
+          <h2 class="section-title">Main Activities<br>of the Association</h2>
+        </div>
+        <p style="max-width:320px; font-size:0.88rem; color:var(--muted); font-weight:300; line-height:1.8;">
+          Our association is active across four key areas that bring our mission to life.
+        </p>
+      </div>
+      <div class="activities-grid">
+
+        <div class="activity-card reveal">
+          <div class="activity-num">01</div>
+          <div class="activity-icon">🎭</div>
+          <h3 class="activity-title">Cultural Events & Celebrations</h3>
+          <p class="activity-text">Organizing festivals, exhibitions, and cultural evenings that showcase the rich diversity of Indian traditions — from classical arts to contemporary expressions — for the Czech public.</p>
+        </div>
+
+        <div class="activity-card reveal">
+          <div class="activity-num">02</div>
+          <div class="activity-icon">🤝</div>
+          <h3 class="activity-title">Community Integration & Networking</h3>
+          <p class="activity-text">Facilitating connections between Indian nationals living in the Czech Republic and the local Czech community, supporting integration and mutual understanding through regular meet-ups and networking events.</p>
+        </div>
+
+        <div class="activity-card reveal">
+          <div class="activity-num">03</div>
+          <div class="activity-icon">📚</div>
+          <h3 class="activity-title">Education & Cultural Awareness</h3>
+          <p class="activity-text">Running workshops, seminars, and educational programs about Indian history, philosophy, cuisine, language, and arts — fostering genuine curiosity and appreciation among Czech citizens.</p>
+        </div>
+
+        <div class="activity-card reveal">
+          <div class="activity-num">04</div>
+          <div class="activity-icon">🌏</div>
+          <h3 class="activity-title">Bilateral Cooperation & Exchange</h3>
+          <p class="activity-text">Supporting Czech–Indian bilateral relations through cooperation with embassies, institutions, businesses, and NGOs, and facilitating exchange programs that deepen ties between both nations.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GOAL -->
+  <section class="goal">
+    <div class="goal-inner">
+      <div class="reveal">
+        <div class="section-label">Our Purpose</div>
+        <h2 class="section-title">The <em>Goal</em> of<br>the Association</h2>
+      </div>
+      <div class="goal-body">
+        <p class="goal-text reveal">
+          The primary goal of FOIA is to nurture a genuine, lasting friendship between the Czech and Indian peoples — built not on formality, but on shared experiences, open dialogue, and heartfelt connection.
+          <br><br>
+          We strive to make India accessible to Czech society and to make Czech culture welcoming to Indians — creating a two-way bridge of understanding that enriches both communities and strengthens the bonds between our two nations.
+        </p>
+        <blockquote class="goal-quote reveal">
+          "To cultivate friendship, foster cultural understanding, and create a lasting bond between the people of Czech Republic and India."
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADDED VALUE -->
+  <section class="added-value">
+    <div class="av-inner">
+      <div class="av-header reveal">
+        <div class="section-label">Why It Matters</div>
+        <h2 class="section-title">Added Value of<br>the Association</h2>
+      </div>
+      <div class="av-grid">
+
+        <div class="av-card reveal">
+          <div class="av-card-accent"></div>
+          <h3 class="av-title">A Welcoming Home for Indians</h3>
+          <p class="av-text">For Indian nationals in the Czech Republic, FOIA provides a sense of community, belonging, and support — a familiar space in a foreign land where culture and connection are celebrated.</p>
+        </div>
+
+        <div class="av-card reveal">
+          <div class="av-card-accent"></div>
+          <h3 class="av-title">Cultural Enrichment for Czech Society</h3>
+          <p class="av-text">FOIA brings the depth and color of Indian civilization to Czech audiences — broadening perspectives, inspiring curiosity, and enriching the cultural fabric of Czech society.</p>
+        </div>
+
+        <div class="av-card reveal">
+          <div class="av-card-accent"></div>
+          <h3 class="av-title">Strengthening Bilateral Ties</h3>
+          <p class="av-text">By connecting people at a grassroots level, FOIA contributes to the broader diplomatic and economic relationship between the Czech Republic and India — people-to-people diplomacy in action.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+
+        <div class="footer-brand">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div class="footer-logo-mark"><span>✦</span></div>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:white;letter-spacing:0.05em;">FOIA</span>
+          </div>
+          <p class="footer-tagline">"Where Cultures Meet,<br>Friendships Flourish."</p>
+          <p class="footer-desc">Friends of India Association is a civic association in the Czech Republic dedicated to fostering friendship, cultural exchange, and mutual understanding between Czech and Indian communities.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <p>
+            <a href="index.html" style="display:block;margin-bottom:10px;">Home</a>
+            <a href="contact.html" style="display:block;margin-bottom:10px;">Contact Us</a>
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <address>
+            Friends of India Association<br>
+            Czech Republic<br><br>
+            <a href="mailto:info@foia.cz">info@foia.cz</a><br><br>
+            <a href="tel:+420000000000">+420 000 000 000</a>
+          </address>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 Friends of India Association in Czech Republic. All rights reserved.</p>
+        <p>Made with ♥ for Czech–Indian friendship</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Active nav
+    const links = document.querySelectorAll('.nav-links a');
+    links.forEach(link => {
+      if (link.href === location.href) link.classList.add('active');
+    });
+  </script>
+</body>
+</html>
