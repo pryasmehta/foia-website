@@ -1035,7 +1035,7 @@
     document.getElementById('prevBtn').addEventListener('click', () => { clearAuto(); goTo(currentIndex - 1); startAuto(); });
     document.getElementById('nextBtn').addEventListener('click', () => { clearAuto(); goTo(currentIndex + 1 > slides.length - 1 ? 0 : currentIndex + 1); startAuto(); });
 
-    function startAuto() { autoTimer = setInterval(() => goTo(currentIndex + 1 > slides.length - 1 ? 0 : currentIndex + 1), 4000); }
+    function startAuto() { autoTimer = setInterval(() => goTo(currentIndex + 1 > slides.length - 1 ? 0 : currentIndex + 1), 6000); }
     function clearAuto() { clearInterval(autoTimer); }
     startAuto();
 
