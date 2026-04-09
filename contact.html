@@ -42,8 +42,8 @@
 
     .nav-logo {
       display: flex; 
-      align-items: center;
-      justify-content: center;
+      align-items: centre;
+      justify-content: centre;
       text-decoration: none;
       flex-shrink: 0;
     }
@@ -131,16 +131,24 @@
       border-color: var(--saffron);
     }
 
+    /* ─── MOBILE LANGUAGE SWITCHER ─────────────────────── */
+    .lang-switcher-mobile {
+      display: none;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .lang-switcher-mobile .lang-btn {
+      padding: 4px 10px;
+      font-size: 0.65rem;
+    }
+
     /* ─── HAMBURGER MENU ─────────────────────── */
     .hamburger {
       display: none;
       flex-direction: column;
       cursor: pointer;
       gap: 5px;
-      background: none;
-      border: none;
-      padding: 0;
-      z-index: 101;
     }
 
     .hamburger span {
@@ -178,11 +186,6 @@
       border-bottom: 1px solid var(--border);
     }
 
-    /* Show mobile menu when open */
-    .mobile-menu.open {
-      display: flex;
-    }
-
     .mobile-menu a {
       text-decoration: none;
       font-size: 0.9rem;
@@ -197,6 +200,10 @@
 
     .mobile-menu a:hover, .mobile-menu a.active {
       color: var(--saffron);
+    }
+
+    .mobile-menu.open {
+      display: flex;
     }
 
     /* ─── PAGE HEADER ───────────────────────────── */
