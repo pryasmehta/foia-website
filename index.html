@@ -110,6 +110,9 @@
       color: var(--muted); letter-spacing: 0.12em;
       text-transform: uppercase;
     }
+    .nav-center {
+      display: flex; gap: 40px; align-items: center; list-style: none;
+    }
 
     .nav-links {
       display: flex; gap: 40px; list-style: none;
@@ -134,6 +137,99 @@
 
     .nav-links a:hover, .nav-links a.active { color: var(--saffron); }
     .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+    /* ─── LANGUAGE SWITCHER ─────────────────────── */
+    .lang-switcher {
+      display: flex; gap: 8px; align-items: center;
+      margin-left: 20px;
+    }
+
+    .lang-btn {
+      background: none;
+      border: 1px solid var(--border);
+      padding: 6px 12px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      color: var(--muted);
+      transition: all 0.2s;
+      border-radius: 2px;
+    }
+
+    .lang-btn.active {
+      background: var(--saffron);
+      color: white;
+      border-color: var(--saffron);
+    }
+
+    .lang-btn:hover {
+      border-color: var(--saffron);
+    }
+
+    /* ─── HAMBURGER MENU ─────────────────────── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 2px;
+      background: var(--muted);
+      transition: all 0.3s;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(8px, 8px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    /* ─── MOBILE NAV MENU ─────────────────────── */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background: rgba(250,246,239,0.98);
+      backdrop-filter: blur(12px);
+      padding: 20px 5vw;
+      flex-direction: column;
+      gap: 16px;
+      z-index: 99;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mobile-menu.open {
+      display: flex;
+    }
+
+    .mobile-menu a {
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      display: block;
+      padding: 12px 0;
+    }
+
+    .mobile-menu a:hover, .mobile-menu a.active {
+      color: var(--saffron);
+    }
 
     /* ─── HERO ─────────────────────────────────── */
     .hero {
@@ -405,6 +501,124 @@
       line-height: 1.5;
     }
 
+/* ─── MEMBERS SECTION ─────────────────────── */
+    .members {
+      background: white;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .members-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .members-header {
+      margin-bottom: 60px;
+    }
+
+    .members-slider {
+      position: relative;
+      margin-top: 40px;
+    }
+
+    .members-track {
+      display: flex;
+      gap: 30px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding-bottom: 20px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .members-track::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .members-track::-webkit-scrollbar-track {
+      background: var(--border);
+      border-radius: 10px;
+    }
+
+    .members-track::-webkit-scrollbar-thumb {
+      background: var(--saffron);
+      border-radius: 10px;
+    }
+
+    .member-card {
+      flex: 0 0 calc(20% - 24px);
+      min-width: 200px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .member-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .member-image {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background: var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+
+    .member-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .member-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--deep);
+      margin-bottom: 4px;
+    }
+
+    .member-title {
+      font-size: 0.8rem;
+      color: var(--saffron);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 500;
+    }
+
+    .members-controls {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .member-btn {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--border);
+      background: white;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      font-size: 1rem;
+    }
+
+    .member-btn:hover {
+      background: var(--saffron);
+      color: white;
+      border-color: var(--saffron);
+    }
+
+
     /* ─── ADDED VALUE ───────────────────────────── */
     .added-value { background: white; }
 
@@ -557,6 +771,12 @@
 
     /* ─── RESPONSIVE ────────────────────────────── */
     @media (max-width: 768px) {
+      nav { padding: 0 4vw; }
+      .nav-logo { margin-right: auto; }
+      .nav-links { display: none; }
+      .lang-switcher { margin-left: auto; }
+      .hamburger { display: flex; }
+      
       .about-inner, .goal-body { grid-template-columns: 1fr; gap: 40px; }
       .activities-grid { grid-template-columns: 1fr; }
       .av-grid { grid-template-columns: 1fr; }
@@ -566,7 +786,7 @@
     }
 
     @media (max-width: 500px) {
-      .nav-links { display: none; }
+      .lang-btn { padding: 4px 8px; font-size: 0.65rem; }
     }
 
     /* ─── GALLERY ───────────────────────────────── */
@@ -726,33 +946,55 @@
   <nav>
     <a class="nav-logo" href="index.html">
       <div class="logo-mark">
-  <img src="images/foia1.png" alt="">
-<!--<</div>
-        div class="logo-text">
-        <span>FOIA</span>
-        <span>Friends of India Association</span>-->
+        <img src="images/foia1.png" alt="FOIA LOGO">
       </div> 
     </a>
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
+    
+    <div class="nav-center">
+      <ul class="nav-links">
+        <li><a href="index.html" class="active" data-cs="Domů" data-en="Home">Home</a></li>
+        <li><a href="#about" class="scroll-link" data-cs="O nás" data-en="About Us">About Us</a></li>
+        <li><a href="#members" class="scroll-link" data-cs="Členové" data-en="Members">Members</a></li>
+        <li><a href="gallery.html" data-cs="Galerie" data-en="Gallery">Gallery</a></li>
+        <li><a href="contact.html" data-cs="Kontakt" data-en="Contact">Contact</a></li>
+      </ul>
+
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="cs">CS</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+    </div>
+
+    <button class="hamburger" id="hamburgerBtn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" class="active" data-cs="Domů" data-en="Home">Domů</a>
+    <a href="#about" class="scroll-link" data-cs="O nás" data-en="About Us">O nás</a>
+    <a href="#members" class="scroll-link" data-cs="Členové" data-en="Members">Členové</a>
+    <a href="gallery.html" data-cs="Galerie" data-en="Gallery">Galerie</a>
+    <a href="contact.html" data-cs="Kontakt" data-en="Contact">Kontakt</a>
+  </div>
 
   <!-- HERO -->
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-pattern"></div>
     <div class="hero-content">
-      <div class="hero-eyebrow">Czech Republic &amp; India</div>
-      <h1>Bridging<br>Two Worlds,<br><em>One Heart</em></h1>
-      <p class="hero-sub">Friends of India Association in Czech Republic</p>
-      <p class="hero-desc">
+      <div class="hero-eyebrow" data-cs="Česká republika &amp; Indie" data-en="Czech Republic &amp; India">Czech Republic &amp; India</div>
+      <h1><span data-cs="Spojování" data-en="Bridging">Bridging</span><br><span data-cs="Dvou světů," data-en="Two Worlds,">Two Worlds,</span><br><em><span data-cs="Jedno srdce" data-en="One Heart">One Heart</span></em></h1>
+      <p class="hero-sub" data-cs="Asociace přátel Indie v České republice" data-en="Friends of India Association in Czech Republic">Friends of India Association in Czech Republic</p>
+      <p class="hero-desc" data-cs="Komunita věnovaná oslavě indické kultury, posílení přátelství mezi českým a indickým národem a vytváření smysluplných vazeb přes hranice." data-en="A community dedicated to celebrating Indian culture, fostering friendship between Czech and Indian people, and building meaningful connections across borders.">
         A community dedicated to celebrating Indian culture, fostering friendship between Czech and Indian people, and building meaningful connections across borders.
       </p>
       <div class="hero-cta">
-        <a href="#about" class="btn-primary">Discover FOIA</a>
-        <a href="contact.html" class="btn-ghost">Get in Touch</a>
+        <a href="#about" class="btn-primary" data-cs="Objevit FOIA" data-en="Discover FOIA">Discover FOIA</a>
+        <a href="contact.html" class="btn-ghost" data-cs="Kontaktujte nás" data-en="Get in Touch">Get in Touch</a>
       </div>
     </div>
   </section>
@@ -761,27 +1003,27 @@
   <section class="about" id="about">
     <div class="about-inner">
       <div class="about-left reveal">
-        <div class="section-label">Who We Are</div>
-        <h2 class="section-title">A bridge between <em>Czech & Indian</em> cultures</h2>
-        <p class="about-text">
-          Friends of India Association (FOIA) is a civic association registered in the Czech Republic, uniting people who share a deep appreciation for India — its culture, heritage, values, and people.
+        <div class="section-label" data-cs="Kdo jsme" data-en="Who We Are">Who We Are</div>
+        <h2 class="section-title" data-cs="Most mezi <em>českými &amp; indickými</em> kulturami" data-en="A bridge between <em>Czech & Indian</em> cultures">A bridge between <em>Czech & Indian</em> cultures</h2>
+        <p class="about-text" data-cs="Friends of India Association (FOIA) je občanské sdružení registrované v České republice, které spojuje jednotlivce se společným zájmem o Indii a rozvoj česko-indických vztahů." data-en="Friends of India Association (FOIA) is a civic association registered in the Czech Republic, bringing together individuals with a shared interest in India and the development of Czech–Indian relations.">
+          Friends of India Association (FOIA) je občanské sdružení registrované v České republice, které spojuje jednotlivce se společným zájmem o Indii a rozvoj česko-indických vztahů.
         </p>
-        <p class="about-text">
-          Founded on the principles of friendship, cultural exchange, and mutual understanding, FOIA serves as a platform for Czech and Indian communities to connect, collaborate, and celebrate together.
+        <p class="about-text" data-cs="Na základě principů přátelství, spolupráce a vzájemného porozumění FOIA vytváří platformu pro propojení české a indické komunity, podporu společných aktivit a rozvoj dlouhodobých partnerství." data-en="Based on the principles of friendship, collaboration, and mutual understanding, FOIA provides a platform for connecting the Czech and Indian communities, supporting joint initiatives, and fostering long-term partnerships.">
+          Na základě principů přátelství, spolupráce a vzájemného porozumění FOIA vytváří platformu pro propojení české a indické komunity, podporu společných aktivit a rozvoj dlouhodobých partnerství.
         </p>
       </div>
       <div class="about-right reveal">
         <div class="stat-card">
           <div class="stat-number">FOIA</div>
-          <div class="stat-label">Friends of India Association — Czech Republic</div>
+          <div class="stat-label" data-cs="Friends of India Association — Česká republika" data-en="Friends of India Association — Czech Republic">Friends of India Association — Czech Republic</div>
         </div>
         <div class="stat-card">
           <div class="stat-number">🇮🇳</div>
-          <div class="stat-label">Cultural Heritage</div>
+          <div class="stat-label" data-cs="Kulturní dědictví" data-en="Cultural Heritage">Cultural Heritage</div>
         </div>
         <div class="stat-card">
           <div class="stat-number">🇨🇿</div>
-          <div class="stat-label">Czech Community</div>
+          <div class="stat-label" data-cs="Česká komunita" data-en="Czech Community">Czech Community</div>
         </div>
       </div>
     </div>
@@ -792,10 +1034,10 @@
     <div class="activities-inner">
       <div class="activities-header reveal">
         <div>
-          <div class="section-label">What We Do</div>
-          <h2 class="section-title">Main Activities<br>of the Association</h2>
+          <div class="section-label" data-cs="Co děláme" data-en="What We Do">What We Do</div>
+          <h2 class="section-title" data-cs="Hlavní činnosti<br>Asociace" data-en="Main Activities<br>of the Association">Main Activities<br>of the Association</h2>
         </div>
-        <p style="max-width:320px; font-size:0.88rem; color:var(--muted); font-weight:300; line-height:1.8;">
+        <p style="max-width:320px; font-size:0.88rem; color:var(--muted); font-weight:300; line-height:1.8;" data-cs="Naše asociace je aktivní ve čtyřech klíčových oblastech, které naplňují naši misi." data-en="Our association is active across four key areas that bring our mission to life.">
           Our association is active across four key areas that bring our mission to life.
         </p>
       </div>
@@ -804,29 +1046,29 @@
         <div class="activity-card reveal">
           <div class="activity-num">01</div>
           <div class="activity-icon">🎭</div>
-          <h3 class="activity-title">Cultural Events & Celebrations</h3>
-          <p class="activity-text">Organizing festivals, exhibitions, and cultural evenings that showcase the rich diversity of Indian traditions — from classical arts to contemporary expressions — for the Czech public.</p>
+          <h3 class="activity-title" data-cs="Kultura " data-en="Culture ">Kultura </h3>
+          <p class="activity-text" data-cs="Podpora kulturní výměny a sdílení tradic k prohlubování vzájemného porozumění. " data-en="Promoting cultural exchange and sharing traditions to deepen mutual understanding. ">Podpora kulturní výměny a sdílení tradic k prohlubování vzájemného porozumění.</p>
         </div>
 
         <div class="activity-card reveal">
           <div class="activity-num">02</div>
           <div class="activity-icon">🤝</div>
-          <h3 class="activity-title">Community Integration & Networking</h3>
-          <p class="activity-text">Facilitating connections between Indian nationals living in the Czech Republic and the local Czech community, supporting integration and mutual understanding through regular meet-ups and networking events.</p>
+          <h3 class="activity-title" data-cs="Byznys" data-en="Business ">Byznys </h3>
+          <p class="activity-text" data-cs="Vytváření prostoru pro obchodní spolupráci, inovace a strategická partnerství mezi českými a indickými subjekty. " data-en="Providing space for trade collaboration, innovation, and strategic partnerships between Czech and Indian entities. ">Vytváření prostoru pro obchodní spolupráci, inovace a strategická partnerství mezi českými a indickými subjekty.</p>
         </div>
 
         <div class="activity-card reveal">
           <div class="activity-num">03</div>
           <div class="activity-icon">📚</div>
-          <h3 class="activity-title">Education & Cultural Awareness</h3>
-          <p class="activity-text">Running workshops, seminars, and educational programs about Indian history, philosophy, cuisine, language, and arts — fostering genuine curiosity and appreciation among Czech citizens.</p>
+          <h3 class="activity-title" data-cs="•	Vzdělávání " data-en="Education">Vzdělávání </h3>
+          <p class="activity-text" data-cs="Propojujeme studenty, akademické instituce a odborníky pro sdílení znalostí a rozvoj nových příležitostí." data-en="Connecting students, academic institutions, and professionals to share knowledge and create new opportunities. ">Propojujeme studenty, akademické instituce a odborníky pro sdílení znalostí a rozvoj nových příležitostí.</p>
         </div>
 
         <div class="activity-card reveal">
           <div class="activity-num">04</div>
           <div class="activity-icon">🌏</div>
-          <h3 class="activity-title">Bilateral Cooperation & Exchange</h3>
-          <p class="activity-text">Supporting Czech–Indian bilateral relations through cooperation with embassies, institutions, businesses, and NGOs, and facilitating exchange programs that deepen ties between both nations.</p>
+          <h3 class="activity-title" data-cs="Bilaterální spolupráce a výměna" data-en="Science ">Bilateral Cooperation & Exchange</h3>
+          <p class="activity-text" data-cs="Podpora spolupráce ve výzkumu, sdílení know-how a rozvoj projektů s dlouhodobým přínosem. " data-en="Supporting research collaboration, knowledge sharing, and projects with long-term impact.">Podpora spolupráce ve výzkumu, sdílení know-how a rozvoj projektů s dlouhodobým přínosem. </p>
         </div>
 
       </div>
@@ -837,18 +1079,83 @@
   <section class="goal">
     <div class="goal-inner">
       <div class="reveal">
-        <div class="section-label">Our Purpose</div>
-        <h2 class="section-title">The <em>Goal</em> of<br>the Association</h2>
+        <div class="section-label" data-cs="Náš účel" data-en="Our Purpose">Our Purpose</div>
+        <h2 class="section-title" data-cs="<em>Cíl</em> Asociace" data-en="The <em>Goal</em> of<br>the Association">The <em>Goal</em> of<br>the Association</h2>
       </div>
       <div class="goal-body">
-        <p class="goal-text reveal">
-          The primary goal of FOIA is to nurture a genuine, lasting friendship between the Czech and Indian peoples — built not on formality, but on shared experiences, open dialogue, and heartfelt connection.
+        <p class="goal-text reveal" data-cs="FOIA podporuje autentické a dlouhodobé přátelství mezi českým a indickým národem, založené na sdílených zkušenostech, otevřeném dialogu a vzájemném porozumění.Asociace usiluje o přibližování Indie české společnosti a zároveň o vytváření vstřícného prostředí pro Indy v ČR – prostor, kde přátelství, spolupráce a porozumění setkávají s konkrétními projekty." data-en="FOIA promotes authentic and lasting friendship between the Czech and Indian peoples, built on shared experiences, open dialogue, and mutual understanding. The association works to bring India closer to Czech society while creating a welcoming environment for Indians in the Czech Republic – a space where friendship, cooperation, and understanding meet concrete projects.">
+          FOIA podporuje autentické a dlouhodobé přátelství mezi českým a indickým národem, založené na sdílených zkušenostech, otevřeném dialogu a vzájemném porozumění.
           <br><br>
-          We strive to make India accessible to Czech society and to make Czech culture welcoming to Indians — creating a two-way bridge of understanding that enriches both communities and strengthens the bonds between our two nations.
+          Asociace usiluje o přibližování Indie české společnosti a zároveň o vytváření vstřícného prostředí pro Indy v ČR – prostor, kde přátelství, spolupráce a porozumění setkávají s konkrétními projekty.
         </p>
-        <blockquote class="goal-quote reveal">
-          "To cultivate friendship, foster cultural understanding, and create a lasting bond between the people of Czech Republic and India."
+        <blockquote class="goal-quote reveal" data-cs="Pěstovat přátelství, podporovat kulturní porozumění a vytvořit trvalé pouto mezi lidmi České republiky a Indie." data-en="To cultivate friendship, foster cultural understanding, and create a lasting bond between the people of Czech Republic and India.">
+          "Pěstovat přátelství, podporovat kulturní porozumění a vytvořit trvalé pouto mezi lidmi České republiky a Indie."
         </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEMBERS SECTION -->
+  <section class="members" id="members">
+    <div class="members-inner">
+      <div class="members-header reveal">
+        <div class="section-label" data-cs="Naši vedoucí" data-en="Our Leaders"></div>
+        <h2 class="section-title" data-cs="Členové &amp; Tým<em></em>" data-en="Members &amp; Team<em></em>">Členové &amp; Tým</h2>
+      </div>
+
+      <div class="members-slider">
+        <div class="members-track" id="membersTrack">
+          
+          <div class="member-card">
+            <div class="member-image">
+              <img src="images/ravi.jpg" alt="Ravindra Kumar" onerror="this.style.display='none'">
+              <span style="display:none;">👤</span>
+            </div>
+            <h3 class="member-name" data-en="Ravindra Kumar" data-cs="Ravindra Kumar">Ravindra Kumar</h3>
+            <p class="member-title" data-cs="Předseda" data-en="President">Předseda</p>
+          </div>
+
+          <div class="member-card">
+            <div class="member-image">
+              <img src="images/alka.png" alt="Alka Hájková" onerror="this.style.display='none'">
+              <span style="display:none;">👤</span>
+            </div>
+            <h3 class="member-name" data-en="Alka Hájková" data-cs="Alka Hájková">Alka Hájková</h3>
+            <p class="member-title" data-cs="Ředitelka" data-en="Director">Ředitelka</p>
+          </div>
+
+          <div class="member-card">
+            <div class="member-image">
+              <img src="images/harpal.jpg" alt="Member 3" onerror="this.style.display='none'">
+              <span>👤</span>
+            </div>
+            <h3 class="member-name" data-en="Harpal Singh" data-cs="Harpal Singh">Harpal Singh</h3>
+            <p class="member-title" data-cs="Člen" data-en="Member">Člen</p>
+          </div>
+
+          <div class="member-card">
+            <div class="member-image">
+              <img src="images/vijay.jpg" alt="Member 4" onerror="this.style.display='none'">
+              <span>👤</span>
+            </div>
+            <h3 class="member-name" data-en="Vijay Bakshi" data-cs="Vijay Bakshi">Vijay Bakshi/h3>
+            <p class="member-title" data-cs="Člen" data-en="Member">Člen</p>
+          </div>
+
+          <div class="member-card">
+            <div class="member-image">
+              <img src="images/Venkat.jpg" alt="Member 5" onerror="this.style.display='none'">
+              <span>👤</span>
+            </div>
+            <h3 class="member-name" data-en="Dr. Venkat Shinde" data-cs="Dr. Venkat Shinde">Dr. Venkat Shinde</h3>
+            <p class="member-title" data-cs="Člen" data-en="Member">Člen</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="members-controls">
+        <button class="member-btn" id="memberPrev">‹</button>
+        <button class="member-btn" id="memberNext">›</button>
       </div>
     </div>
   </section>
@@ -857,27 +1164,27 @@
   <section class="added-value">
     <div class="av-inner">
       <div class="av-header reveal">
-        <div class="section-label">Why It Matters</div>
-        <h2 class="section-title">Added Value of<br>the Association</h2>
+        <div class="section-label" data-en="Why It Matters" data-cs="Proč je to důležité">Why It Matters</div>
+        <h2 class="section-title" data-en="Added Value of the Association" data-cs="Přidaná hodnota asociace">Přidaná hodnota asociace</h2>
       </div>
       <div class="av-grid">
 
         <div class="av-card reveal">
           <div class="av-card-accent"></div>
-          <h3 class="av-title">A Welcoming Home for Indians</h3>
-          <p class="av-text">For Indian nationals in the Czech Republic, FOIA provides a sense of community, belonging, and support — a familiar space in a foreign land where culture and connection are celebrated.</p>
+          <h3 class="av-title" data-en="A Welcoming Home for Indians" data-cs="•	Vítané zázemí pro Indy ">Vítané zázemí pro Indy </h3>
+          <p class="av-text" data-en="FOIA offers Indian nationals in the Czech Republic a sense of community, belonging, and support; a space where culture and connections are celebrated. " data-cs="FOIA poskytuje komunitu, pocit sounáležitosti a podporu; místo, kde se mohou cítit doma a kde se slaví propojení a vzájemné vztahy. ">FOIA poskytuje komunitu, pocit sounáležitosti a podporu; místo, kde se mohou cítit doma a kde se slaví propojení a vzájemné vztahy. </p>
         </div>
 
         <div class="av-card reveal">
           <div class="av-card-accent"></div>
-          <h3 class="av-title">Cultural Enrichment for Czech Society</h3>
-          <p class="av-text">FOIA brings the depth and color of Indian civilization to Czech audiences — broadening perspectives, inspiring curiosity, and enriching the cultural fabric of Czech society.</p>
+          <h3 class="av-title" data-en="Cultural Enrichment for Czech Society" data-cs="Kulturní obohacení české společnosti ">Cultural Enrichment for Czech Society</h3>
+          <p class="av-text" data-en="FOIA brings the depth and vibrancy of Indian civilization to Czech audiences, broadening perspectives, inspiring curiosity, and enriching the cultural landscape of the Czech Republic. " data-cs="FOIA přináší hloubku a pestrost indické civilizace českému publiku, rozšiřuje obzory, inspiruje k novým poznatkům a obohacuje kulturní prostředí ČR. ">FOIA přináší hloubku a pestrost indické civilizace českému publiku, rozšiřuje obzory, inspiruje k novým poznatkům a obohacuje kulturní prostředí ČR. </p>
         </div>
 
         <div class="av-card reveal">
           <div class="av-card-accent"></div>
-          <h3 class="av-title">Strengthening Bilateral Ties</h3>
-          <p class="av-text">By connecting people at a grassroots level, FOIA contributes to the broader diplomatic and economic relationship between the Czech Republic and India — people-to-people diplomacy in action.</p>
+          <h3 class="av-title" data-en="Strengthening Bilateral Ties" data-cs="Posílení bilaterálních vztahů">Strengthening Bilateral Ties</h3>
+          <p class="av-text" data-en="By connecting people at the grassroots level, FOIA contributes to the broader diplomatic and economic relationship between the Czech Republic and India – people-to-people diplomacy in action. " data-cs="Propojujíc lidi na lokální úrovni, FOIA přispívá k diplomatickým a ekonomickým vztahům mezi Českou republikou a Indií – praktická diplomacie lidí mezi lidmi. ">Propojujíc lidi na lokální úrovni, FOIA přispívá k diplomatickým a ekonomickým vztahům mezi Českou republikou a Indií – praktická diplomacie lidí mezi lidmi. </p>
         </div>
 
       </div>
@@ -888,8 +1195,8 @@
   <section class="gallery" id="gallery">
     <div class="gallery-header reveal">
       <div>
-        <div class="section-label">Our Moments</div>
-        <h2 class="section-title">Photo <em>Gallery</em></h2>
+        <div class="section-label" data-en="Our Moments" data-cs="Naše chvíle">Our Moments</div>
+        <h2 class="section-title" data-en="Photo Gallery" data-cs="Fotogalerie">Photo Gallery</h2>
       </div>
       <div class="gallery-controls">
         <button class="gallery-btn" id="prevBtn" aria-label="Previous">&#8592;</button>
@@ -962,24 +1269,24 @@
             <span >Friends of India Association</span></div>
           </div>
          
-          <p class="footer-tagline">"Where Cultures Meet,<br>Friendships Flourish."</p>
-          <p class="footer-desc">Friends of India Association is a civic association in the Czech Republic dedicated to fostering friendship, cultural exchange, and mutual understanding between Czech and Indian communities.</p>
+          <p class="footer-tagline" data-en="Where Cultures Meet, Friendships Flourish." data-cs="Kde se setkávají kultury, rozvíjí se přátelství.">Where Cultures Meet, Friendships Flourish.</p>
+          <p class="footer-desc" data-en="Friends of India Association is a civic association in the Czech Republic dedicated to fostering friendship, cultural exchange, and mutual understanding between Czech and Indian communities." data-cs="Asociace přátel Indie je občanská asociace v České republice zaměřená na podporu přátelství, výměny kultur a vzájemného porozumění mezi českou a indickou komunitou.">Friends of India Association is a civic association in the Czech Republic dedicated to fostering friendship, cultural exchange, and mutual understanding between Czech and Indian communities.</p>
         </div>
 
         <div class="footer-col">
-          <h4>Navigation</h4>
+          <h4 data-en="Navigation" data-cs="Navigace">Navigation</h4>
           <p>
-            <a href="index.html" style="display:block;margin-bottom:10px;">Home</a>
-            <a href="contact.html" style="display:block;margin-bottom:10px;">Contact Us</a>
+            <a href="index.html" style="display:block;margin-bottom:10px;" data-en="Home" data-cs="Domů">Home</a>
+            <a href="contact.html" style="display:block;margin-bottom:10px;" data-en="Contact Us" data-cs="Kontaktujte nás">Contact Us</a>
           </p>
         </div>
 
         <div class="footer-col">
-          <h4>Contact</h4>
+          <h4 data-en="Contact" data-cs="Kontakt">Contact</h4>
           <address>
             Friends of India Association<br>
             Czech Republic<br><br>
-            <a href="mailto:info@foia.cz">info@foia.cz</a><br>
+            <a href="/cdn-cgi/l/email-protection#056c6b636a45636a6c642b667f"><span class="__cf_email__" data-cfemail="076e6961684761686e6629647d">[email&#160;protected]</span></a><br>
             <a href="tel:+420 722 390 009">+420 722 390 009</a><br>
             <a Href=""> Nad Koupadly 286/3, Strašín, 251 01 Říčany"</a
           </address>
@@ -988,13 +1295,101 @@
       </div>
 
       <div class="footer-bottom">
-        <p>© 2025 Friends of India Association in Czech Republic. All rights reserved.</p>
-        <p>Made with ♥ for Czech–Indian friendship</p>
+        <p data-en="© 2025 Friends of India Association in Czech Republic. All rights reserved." data-cs="© 2025 Asociace přátel Indie v České republice. Všechna práva vyhrazena.">© 2025 Friends of India Association in Czech Republic. All rights reserved.</p>
+        <p data-en="Made with ♥ for Czech–Indian friendship" data-cs="Vytvořeno s ♥ pro česko-indické přátelství">Made with ♥ for Czech–Indian friendship</p>
       </div>
     </div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // ══════════════════════════════════════════════════════════════
+    // LANGUAGE SWITCHER
+    // ══════════════════════════════════════════════════════════════
+    let currentLang = 'en'; // English is default
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('lang', lang);
+      
+      // Elements that need innerHTML (contain HTML tags like <br>, <em>, &amp;)
+      const htmlElements = ['.goal-text', '.goal-quote', '.section-title'];
+      
+      // Update all elements with data-cs and data-en attributes
+      document.querySelectorAll('[data-cs][data-en]').forEach(el => {
+        const text = el.getAttribute(`data-${lang}`);
+        
+        // Check if this element should use innerHTML
+        let useInnerHTML = false;
+        htmlElements.forEach(selector => {
+          if (el.matches(selector)) {
+            useInnerHTML = true;
+          }
+        });
+        
+        if (useInnerHTML) {
+          el.innerHTML = text;
+        } else {
+          el.textContent = text;
+        }
+      });
+
+      // Update button styles
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      });
+
+      // Update html lang attribute
+      document.documentElement.lang = lang === 'cs' ? 'cs' : 'en';
+    }
+
+    // Initialize language from localStorage or default to English
+    const savedLang = localStorage.getItem('lang') || 'en';
+    setLanguage(savedLang);
+
+    // Language button event listeners
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        setLanguage(e.target.getAttribute('data-lang'));
+      });
+    });
+
+    // ══════════════════════════════════════════════════════════════
+    // HAMBURGER MENU
+    // ══════════════════════════════════════════════════════════════
+    const hamburger = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('open');
+    });
+
+    // Close menu when a link is clicked
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    // ══════════════════════════════════════════════════════════════
+    // REST OF ORIGINAL SCRIPTS
+    // ══════════════════════════════════════════════════════════════
+    // SMOOTH SCROLL FOR ANCHOR LINKS
+    // ══════════════════════════════════════════════════════════════
+    document.querySelectorAll('.scroll-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (href.startsWith('#')) {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      });
+    });
+
     // Scroll reveal
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver(entries => {
@@ -1099,5 +1494,31 @@
       if (e.key === 'ArrowLeft') lbGo(-1);
       if (e.key === 'ArrowRight') lbGo(1);
     });
-  </script></body>
-</html>
+
+    // ══════════════════════════════════════════════════════════════
+    // MEMBERS SLIDER
+    // ══════════════════════════════════════════════════════════════
+    const membersTrack = document.getElementById('membersTrack');
+    const memberCards = Array.from(membersTrack.querySelectorAll('.member-card'));
+    const memberPrevBtn = document.getElementById('memberPrev');
+    const memberNextBtn = document.getElementById('memberNext');
+    let memberCurrentIndex = 0;
+
+    function scrollMembers(direction) {
+      const cardWidth = memberCards[0].offsetWidth;
+      const gap = 30;
+      const scrollAmount = cardWidth + gap;
+      
+      if (direction === 'next') {
+        memberCurrentIndex = Math.min(memberCurrentIndex + 1, memberCards.length - 1);
+      } else {
+        memberCurrentIndex = Math.max(memberCurrentIndex - 1, 0);
+      }
+      
+      const offset = memberCurrentIndex * scrollAmount;
+      membersTrack.style.transform = `translateX(-${offset}px)`;
+    }
+
+    memberPrevBtn.addEventListener('click', () => scrollMembers('prev'));
+    memberNextBtn.addEventListener('click', () => scrollMembers('next'));
+  </script>
