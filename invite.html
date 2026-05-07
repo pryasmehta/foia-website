@@ -1,1 +1,19 @@
-const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=FOIA+Official+Launch+%26+Gala+Dinner&dates=20260513T170000Z/20260513T190000Z&location=Vin%C3%A1rna+Obecn%C3%AD+d%C5%AFm%2C+n%C3%A1m%C4%9Bst%C3%AD+Republiky+1090%2F5%2C+Praha+1&details=FOIA+Official+Launch+followed+by+Gala+Dinner.+Dress+Code%3A+Formal`;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOIA Gala Invitation</title>
+</head>
+<body>
+    <h1>Loading invitation...</h1>
+    <p>Redirecting you to add the event to your calendar...</p>
+
+    <script>
+        // Redirect to Google Calendar with event details
+        const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=FOIA+Official+Launch+%26+Gala+Dinner&dates=20260513T170000Z/20260513T190000Z&location=Vin%C3%A1rna+Obecn%C3%AD+d%C5%AFm%2C+n%C3%A1m%C4%9Bst%C3%AD+Republiky+1090%2F5%2C+Praha+1&details=FOIA+Official+Launch+followed+by+Gala+Dinner.+Dress+Code%3A+Formal`;
+        
+        window.location.href = googleCalendarUrl;
+    </script>
+</body>
+</html>
