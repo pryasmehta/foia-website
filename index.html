@@ -662,6 +662,122 @@
       font-size: 0.88rem; color: var(--muted);
       line-height: 1.8; font-weight: 300;
     }
+    
+    /* ─── MEDIA COVERAGE ────────────────────────── */
+    .media {
+      background: var(--cream);
+      padding: 100px 5vw;
+    }
+
+    .media-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .media-header {
+      margin-bottom: 60px;
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 32px;
+    }
+
+    .media-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 28px 28px;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .media-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--saffron);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .media-card:hover {
+      border-color: var(--saffron);
+      box-shadow: 0 12px 40px rgba(232, 101, 26, 0.12);
+      transform: translateY(-4px);
+    }
+
+    .media-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .media-publication {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--saffron);
+      margin-bottom: 12px;
+    }
+
+    .media-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: var(--deep);
+      margin-bottom: 16px;
+      line-height: 1.4;
+      flex-grow: 1;
+    }
+
+    .media-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .media-date {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    .media-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: var(--saffron);
+      color: white;
+      text-decoration: none;
+      border-radius: 2px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      transition: all 0.2s;
+    }
+
+    .media-link:hover {
+      background: var(--saffron-light);
+      transform: translateX(2px);
+    }
+
+    .media-link::after {
+      content: '→';
+      font-size: 0.9rem;
+    }
+
 
     /* ─── FOOTER ────────────────────────────────── */
     footer {
@@ -1244,6 +1360,60 @@
     </div>
 
     <div class="gallery-dots" id="galleryDots"></div>
+  </section>
+
+  <!-- MEDIA COVERAGE -->
+  <section class="media" id="media">
+    <div class="media-inner">
+      <div class="media-header reveal">
+        <div class="section-label" data-en="Press & Media" data-cs="TISK A MÉDIA">Press & Media</div>
+        <h2 class="section-title" data-en="Media Coverage" data-cs="Mediální pokrytí">Media Coverage</h2>
+      </div>
+
+      <div class="media-grid">
+        
+        <!-- Media Card 1 -->
+        <div class="media-card reveal">
+          <div class="media-publication" data-en="VIP Osobnosti" data-cs="VIP Osobnosti">VIP Osobnosti</div>
+          <h3 class="media-headline" data-en="Karel Havlíček met with Indian businessmen - Pharmacy and film industry at stake" data-cs="Karel Havlíček jednal s indickými podnikateli - Ve hře je farmacie i filmový průmysl">Karel Havlíček met with Indian businessmen - Pharmacy and film industry at stake</h3>
+          <div class="media-meta">
+            <span class="media-date" data-en="2024" data-cs="2024">2024</span>
+            <a href="https://viposobnosti.cz/clanky/karel-havlicek-jednal-s-indickymi-byznysmeny-ve-hre-je-farmacie-i-filmovy-prumysl/" class="media-link" target="_blank" data-en="Read" data-cs="Přečíst">Read</a>
+          </div>
+        </div>
+
+        <!-- Media Card 2 -->
+        <div class="media-card reveal">
+          <div class="media-publication" data-en="Večerní Praha" data-cs="Večerní Praha">Večerní Praha</div>
+          <h3 class="media-headline" data-en="Czech-India strengthen cooperation - New meeting will connect industry, science and trade" data-cs="Česko-Indie posilují spolupráci - Nové setkání propojí průmysl, vědu i obchod">Czech-India strengthen cooperation - New meeting will connect industry, science and trade</h3>
+          <div class="media-meta">
+            <span class="media-date" data-en="2024" data-cs="2024">2024</span>
+            <a href="https://www.vecerni-praha.cz/cesko-a-indie-posiluji-spolupraci-nove-setkani-propoji-prumysl-vedu-i-obchod/" class="media-link" target="_blank" data-en="Read" data-cs="Přečíst">Read</a>
+          </div>
+        </div>
+
+        <!-- Media Card 3 -->
+        <div class="media-card reveal">
+          <div class="media-publication" data-en="VIP Osobnosti" data-cs="VIP Osobnosti">VIP Osobnosti</div>
+          <h3 class="media-headline" data-en="Trade between India and Czech Republic reached four billion dollars for the first time in 2024" data-cs="Obchod mezi Indií a Českem v roce 2024 poprvé dosáhl objemu čtyř miliard amerických dolarů">Trade between India and Czech Republic reached four billion dollars for the first time in 2024</h3>
+          <div class="media-meta">
+            <span class="media-date" data-en="2024" data-cs="2024">2024</span>
+            <a href="https://viposobnosti.cz/clanky/obchod-mezi-indii-a-ceskem-v-roce-2024-poprve-dosahl-objemu-ctyr-miliard-americkych-dolaru-rika-karel-havlicek/" class="media-link" target="_blank" data-en="Read" data-cs="Přečíst">Read</a>
+          </div>
+        </div>
+
+        <!-- Media Card 4 -->
+        <div class="media-card reveal">
+          <div class="media-publication" data-en="VIP Osobnosti" data-cs="VIP Osobnosti">VIP Osobnosti</div>
+          <h3 class="media-headline" data-en="Czech-Indian Association is a space for joint projects and bilateral relations" data-cs="Česko-indická asociace je prostor pro vznik společných projektů i rozvoj bilaterálních vztahů">Czech-Indian Association is a space for joint projects and bilateral relations</h3>
+          <div class="media-meta">
+            <span class="media-date" data-en="2024" data-cs="2024">2024</span>
+            <a href="https://viposobnosti.cz/clanky/cesko-indicka-asociace-je-prostor-pro-vznik-spolecnych-projektu-i-rozvoj-bilateralnich-vztahu/" class="media-link" target="_blank" data-en="Read" data-cs="Přečíst">Read</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </section>
 
   <!-- Lightbox -->
