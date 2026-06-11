@@ -1864,4 +1864,54 @@
 
     memberPrevBtn.addEventListener('click', () => scrollMembers('prev'));
     memberNextBtn.addEventListener('click', () => scrollMembers('next'));
+    
+    // ══════════════════════════════════════════════════════════════
+    // HERO IMAGE SLIDER
+    // ══════════════════════════════════════════════════════════════
+    (function () {
+      const heroTrack = document.getElementById('heroSliderTrack');
+      const heroSlides = Array.from(heroTrack.querySelectorAll('.hero-slide'));
+      const dotsContainer = document.getElementById('heroSliderDots');
+      let heroIndex = 0;
+      let heroTimer;
+
+      // Build dots
+      heroSlides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        if (i === 0) dot.classList.add('active');
+        dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+        dot.addEventListener('click', () => { heroGoTo(i); resetHeroTimer(); });
+        dotsContainer.appendChild(dot);
+      });
+
+      function heroGoTo(index) {
+        heroIndex = (index + heroSlides.length) % heroSlides.length;
+        heroTrack.style.transform = `translateX(-${heroIndex * 100}%)`;
+        dotsContainer.querySelectorAll('button').forEach((d, i) => {
+          d.classList.toggle('active', i === heroIndex);
+        });
+      }
+
+      function resetHeroTimer() {
+        clearInterval(heroTimer);
+        heroTimer = setInterval(() => heroGoTo(heroIndex + 1), 5000);
+      }
+
+      document.getElementById('heroSliderPrev').addEventListener('click', () => {
+        heroGoTo(heroIndex - 1); resetHeroTimer();
+      });
+      document.getElementById('heroSliderNext').addEventListener('click', () => {
+        heroGoTo(heroIndex + 1); resetHeroTimer();
+      });
+
+      // Touch swipe support
+      let heroTouchX = 0;
+      heroTrack.addEventListener('touchstart', e => { heroTouchX = e.touches[0].clientX; });
+      heroTrack.addEventListener('touchend', e => {
+        const dx = e.changedTouches[0].clientX - heroTouchX;
+        if (Math.abs(dx) > 40) { heroGoTo(dx < 0 ? heroIndex + 1 : heroIndex - 1); resetHeroTimer(); }
+      });
+
+      resetHeroTimer();
+    })();
   </script>
