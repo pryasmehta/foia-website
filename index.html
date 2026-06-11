@@ -330,6 +330,115 @@
     }
     .btn-ghost:hover { background: var(--saffron); color: white; }
 
+ /* ─── HERO SLIDER ──────────────────────────── */
+    .hero-slider {
+      position: absolute;
+      right: 5vw;
+      top: 50%;
+      transform: translateY(-50%);
+      width: min(420px, 38vw);
+      aspect-ratio: 4 / 3;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 24px 64px rgba(26,20,16,0.18), 0 4px 16px rgba(232,101,26,0.12);
+      z-index: 2;
+    }
+
+    .hero-slider-track {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+    }
+
+    .hero-slide {
+      flex-shrink: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Placeholder slide styling for slides without images yet */
+    .hero-slide-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(232,101,26,0.12) 0%, rgba(45,106,79,0.10) 100%);
+      color: var(--muted);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      gap: 10px;
+    }
+
+    .hero-slide-placeholder span {
+      font-size: 2rem;
+    }
+
+    /* Slider nav dots */
+    .hero-slider-dots {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 7px;
+      z-index: 3;
+    }
+
+    .hero-slider-dots button {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255,255,255,0.5);
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.25s, transform 0.25s;
+    }
+
+    .hero-slider-dots button.active {
+      background: white;
+      transform: scale(1.35);
+    }
+
+    /* Prev / Next arrows */
+    .hero-slider-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 34px; height: 34px;
+      background: rgba(255,255,255,0.88);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem;
+      color: var(--deep);
+      z-index: 3;
+      transition: background 0.2s, color 0.2s;
+      backdrop-filter: blur(6px);
+    }
+
+    .hero-slider-arrow:hover { background: var(--saffron); color: white; }
+    .hero-slider-arrow.prev { left: 12px; }
+    .hero-slider-arrow.next { right: 12px; }
+
+    /* Hide slider on small screens so hero text still fits */
+    @media (max-width: 900px) {
+      .hero-slider { display: none; }
+    }
+
+    
     /* ─── SECTION SHARED ───────────────────────── */
     section { padding: 100px 5vw; }
 
@@ -1104,6 +1213,47 @@
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-pattern"></div>
+   <!-- HERO IMAGE SLIDER -->
+    <div class="hero-slider" id="heroSlider">
+      <div class="hero-slider-track" id="heroSliderTrack">
+
+        <!-- Slide 1 — replace src with your image path, e.g. <img src="images/hero1.jpg" alt="..."> -->
+        <div class="hero-slide">
+          <div class="hero-slide-placeholder"><img src="images/FOIA_2026-68.jpg" alt="..."><span>🖼️</span>Image 1</div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="hero-slide">
+          <div class="hero-slide-placeholder"><img src="images/FOIA_2026-57.jpg" alt="..."><span>🖼️</span></div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="hero-slide">
+          <div class="hero-slide-placeholder"><img src="images/FOIA_2026-55.jpg" alt="..."><span>🖼️</span></div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="hero-slide">
+          <div class="hero-slide-placeholder"><img src="images/FOIA_2026-56.jpg" alt="..."><span>🖼️</span></div>
+        </div>
+
+        <!-- Slide 5 -->
+        <div class="hero-slide">
+          <div class="hero-slide-placeholder"><img src="images/FOIA_2026-38.jpg" alt="..."><span>🖼️</span></div>
+        </div>
+
+      </div>
+
+      <!-- Arrows -->
+      <button class="hero-slider-arrow prev" id="heroSliderPrev" aria-label="Previous slide">&#8592;</button>
+      <button class="hero-slider-arrow next" id="heroSliderNext" aria-label="Next slide">&#8594;</button>
+
+      <!-- Dots -->
+      <div class="hero-slider-dots" id="heroSliderDots"></div>
+    </div>
+
+
+    
     <div class="hero-content">
       <div class="hero-eyebrow" data-cs="Česká republika &amp; Indie" data-en="Czech Republic &amp; India">Czech Republic &amp; India</div>
       <h1><span data-cs="Platforma" data-en="A Platform ">Platforma</span><br><span data-cs="propojující ," data-en="Connecting,">propojující</span><br><em><span data-cs="české a indické partnery " data-en="Czech and Indian Partners">české a indické partnery </span></em></h1>
